@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.schoolbus.mapper.AdminMapper">
+	<select id="selectById" resultType="com.schoolbus.pojo.Admin">
+		select * from _admin where id = #{id}
+	</select>
+	<select id="selectByName" resultType="com.schoolbus.pojo.Admin">
+		select * from _admin where name = #{name}
+	</select>
+	<insert id="insertAdmin" parameterType="com.schoolbus.pojo.Admin">
+		insert into _admin(name,passWord) values(#{admin.name},#{admin.passWord})
+	</insert>
+	<update id="updatePassword">
+		update _admin set passWord = #{password} where id = #{admin.id}
+	</update>
+	<update id="updateInformation" parameterType="com.schoolbus.pojo.Admin">
+		update _admin
+		<set>
+			<if test="admin.nickname != '' and admin.nickname != null">
+				nickname = #{admin.nickname},
+			</if>
+			<if test="admin.sex != '' and admin.sex != null">
+				sex = #{admin.sex},
+			</if>
+			<if test="admin.realname != '' and admin.realname != null">
+				realname = #{admin.realname},
+			</if>
+			<if test="admin.email != '' and admin.email != null">
+				email = #{admin.email},
+			</if>
+			<if test="admin.phone != '' and admin.phone != null">
+				phone = #{admin.phone},
+			</if>
+			<if test="admin.qq != '' and admin.qq != null">
+				qq = #{admin.qq},
+			</if>
+			<if test="admin.remark != '' and admin.remark != null">
+				remark = #{admin.remark},
+			</if>
+		</set>
+		where id = #{admin.id}
+	</update>
+</mapper>

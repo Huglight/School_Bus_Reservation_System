@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.schoolbus.mapper.MessageMapper">
+	<insert id="insertMessage" parameterType="com.schoolbus.pojo.Message">
+		insert into message(title,text,author,institute,type,fillindate) 
+		values(#{msg.title},#{msg.text},#{msg.author},#{msg.institute},#{msg.type},#{msg.fillindate})
+	</insert>
+	<select id="selectById" resultType="com.schoolbus.pojo.Message">
+		select * from message where id = #{id}
+	</select>
+	<select id="selectAllNews" resultType="com.schoolbus.pojo.Message">
+		select * from message where type = 'news' order by id desc
+	</select>
+	<select id="selectAllHelp" resultType="com.schoolbus.pojo.Message">
+		select * from message where type = 'help' order by id desc
+	</select>
+	<select id="selectAllSuggestion" resultType="com.schoolbus.pojo.Message">
+		select * from message where type = 'suggestion' order by id desc
+	</select>
+	<delete id="deleteById">
+		delete from message where id = #{id}
+	</delete>
+	<update id="updateMsg" parameterType="com.schoolbus.pojo.Message">
+		update message 
+		<set>
+			title = #{msg.title}, author = #{msg.author}, institute = #{msg.institute}, text = #{msg.text}
+		</set>
+		where id = #{msg.id}
+	</update>
+</mapper>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="School_Bus_Reservation_System">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/resource"/>
+        <property name="java-output-path" value="/School_Bus_Reservation_System/build/classes"/>
+        <property name="context-root" value="schoolbus"/>
+    </wb-module>
+</project-modules>

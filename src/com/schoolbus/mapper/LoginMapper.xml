@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.schoolbus.mapper.LoginMapper">
+	<select id="selectById" resultType="com.schoolbus.pojo.Login">
+		select * from login where id = #{id}
+	</select>
+	<select id="selectByUname" resultType="com.schoolbus.pojo.Login">
+		select * from login where userName = #{uname}
+	</select>
+	<insert id="insertUser" parameterType="com.schoolbus.pojo.Login">
+		insert into login(userName,passWord) values(#{user.userName},#{user.passWord})
+	</insert>
+	<update id="updatePassword">
+		update login set passWord = #{password} where id = #{user.id}
+	</update>
+	<update id="updateInformation">
+		update login 
+		<set>
+			<if test="user.nickname != '' and user.nickname != null">
+				nickname = #{user.nickname},
+			</if>
+			<if test="user.sex != '' and user.sex != null">
+				sex = #{user.sex},
+			</if>
+			<if test="user.realname != '' and user.realname != null">
+				realname = #{user.realname},
+			</if>
+			<if test="user.email != '' and user.email != null">
+				email = #{user.email},
+			</if>
+			<if test="user.phone != '' and user.phone != null">
+				phone = #{user.phone},
+			</if>
+			<if test="user.qq != '' and user.qq != null">
+				qq = #{user.qq},
+			</if>
+			<if test="user.remark != '' and user.remark != null">
+				remark = #{user.remark},
+			</if>
+		</set>
+		where id = #{user.id}
+	</update>
+</mapper>
